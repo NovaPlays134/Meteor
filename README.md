@@ -12,4 +12,8 @@ code with crashes that i RLLY didnt wanna mess with ban reasons whatever you kno
 with all options i could recode and didnt leave out bc useless, to risky, isnt even posible anymore with gta itself
 
 i got permision of the original owner of the script (RulyPancake) and alot credit to him hes a amazing coder
-so yeah i hope u injoy of what i made--
+so yeah i hope u injoy of what i made
+
+if you have any recommendations that i could add tell me and ill see what i can do
+i wont leave the script like how it is now this is a begining if you suggest stuff i will add them and the script will get bigger and bigger
+i will also recode other 2take1 scripts
