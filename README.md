@@ -15,5 +15,5 @@ i got permision of the original owner of the script (RulyPancake) and alot credi
 so yeah i hope u injoy of what i made
 
 if you have any recommendations that i could add tell me and ill see what i can do
-i wont leave the script like how it is now this is a begining if you suggest stuff i will add them and the script will get bigger and bigger
+i wont leave the script like how it is now this is a beginning if you suggest stuff i will add them and the script will get bigger and bigger
 i will also recode other 2take1 scripts
