@@ -90,6 +90,7 @@ local wep_hashes = require "Meteor.Functions.weapon_hashes"
 local main_local = menu.list(menu.my_root(), "Local")
 local main_online = menu.list(menu.my_root(), "Online")
 local main_spawner = menu.list(menu.my_root(), "Spawner")
+local main_settings = menu.list(menu.my_root(), "Settings")
 --LOCAL LISTS--
 local player_options = menu.list(main_local, "Player Options")
 local vehicle_options = menu.list(main_local, "Vehicle Options")
@@ -1461,6 +1462,17 @@ menu.action(main_spawner, "Spawn Entity", {}, "", function()
 			func.toast("Meteor", "Successfully spawned object (" .. entity .. ")")
 		end
 	end
+end)
+
+menu.action(main_settings, "Check for Update", {}, "The script will automatically check for updates at most daily, but you can manually check using this option anytime.", function()
+    auto_update_config.check_interval = 0
+    if auto_updater.run_auto_update(auto_update_config) then
+        util.toast("No updates found")
+    end
+end)
+menu.action(main_settings, "Clean Reinstall", {}, "Force an update to the latest version, regardless of current version.", function()
+    auto_update_config.clean_reinstall = true
+    auto_updater.run_auto_update(auto_update_config)
 end)
 
 ----------------------------------------------------------------------------------------------------------
