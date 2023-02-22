@@ -362,7 +362,6 @@ local proofs = {
     steam = {name="Steam",on=false},
     drown = {name="Drowning",on=false},
 }
-local immortalityCmd = menu.ref_by_path("Self>Immortality")
 for _,data in pairs(proofs) do
     menu.toggle(veh_custom_proofs, data.name, {data.name:lower().."proof"}, "Makes you invulnerable to "..data.name:lower()..".", function(toggle)
         data.on = toggle
@@ -370,9 +369,7 @@ for _,data in pairs(proofs) do
 end
 util.create_tick_handler(function()
     local vehicle = entities.get_user_vehicle_as_handle(true)
-    if not menu.get_value(immortalityCmd) then
         ENTITY.SET_ENTITY_PROOFS(vehicle, proofs.bullet.on, proofs.fire.on, proofs.explosion.on, proofs.collision.on, proofs.melee.on, proofs.steam.on, false, proofs.drown.on)
-    end
 end)
 --end veh proofs--
 
