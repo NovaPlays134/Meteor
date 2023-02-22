@@ -142,74 +142,26 @@ local proofs1 = {
 }
 
 local custom_proofs = menu.list(player_options, "Custom Proofs")
---bullet proof--
-menu.toggle_loop(custom_proofs, "Bulletproof", {}, "", function()
-	ENTITY.GET_ENTITY_PROOFS(players.user_ped(), proofs.bullet, proofs.fire, proofs.expl, proofs.coll, proofs.melee, proofs.steam, proofs.p7, proofs.drown)
-
-	ENTITY.SET_ENTITY_PROOFS(players.user_ped(), true, proofs1.fire1, proofs1.expl1, proofs1.coll1, proofs1.melee1, proofs1.steam1, proofs1.p71, proofs1.drown1)
-	util.yield(0)
-end, function()
-	ENTITY.SET_ENTITY_PROOFS(players.user_ped(), proofs.bullet1, proofs.fire1, proofs.expl1, proofs.coll1, proofs.melee1, proofs.steam1, proofs.p71, proofs.drown1)
-end)
-
---fire proof--
-menu.toggle_loop(custom_proofs, "Fireproof", {}, "", function()
-	ENTITY.GET_ENTITY_PROOFS(players.user_ped(), proofs.bullet, proofs.fire, proofs.expl, proofs.coll, proofs.melee, proofs.steam, proofs.p7, proofs.drown)
-
-	ENTITY.SET_ENTITY_PROOFS(players.user_ped(), proofs1.bullet1, true, proofs1.expl1, proofs1.coll1, proofs1.melee1, proofs1.steam1, proofs1.p71, proofs1.drown1)
-	util.yield(0)
-end, function()
-	ENTITY.SET_ENTITY_PROOFS(players.user_ped(), proofs.bullet1, proofs.fire1, proofs.expl1, proofs.coll1, proofs.melee1, proofs.steam1, proofs.p71, proofs.drown1)
-end)
-
---explosion proof--
-menu.toggle_loop(custom_proofs, "Explosionproof", {}, "", function()
-	ENTITY.GET_ENTITY_PROOFS(players.user_ped(), proofs.bullet, proofs.fire, proofs.expl, proofs.coll, proofs.melee, proofs.steam, proofs.p7, proofs.drown)
-
-	ENTITY.SET_ENTITY_PROOFS(players.user_ped(), proofs1.bullet1, proofs1.fire1, true, proofs1.coll1, proofs1.melee1, proofs1.steam1, proofs1.p71, proofs1.drown1)
-	util.yield(0)
-end, function()
-	ENTITY.SET_ENTITY_PROOFS(players.user_ped(), proofs.bullet1, proofs.fire1, proofs.expl1, proofs.coll1, proofs.melee1, proofs.steam1, proofs.p71, proofs.drown1)
-end)
-
---collision proof--
-menu.toggle_loop(custom_proofs, "Collisionproof", {}, "", function()
-	ENTITY.GET_ENTITY_PROOFS(players.user_ped(), proofs.bullet, proofs.fire, proofs.expl, proofs.coll, proofs.melee, proofs.steam, proofs.p7, proofs.drown)
-
-	ENTITY.SET_ENTITY_PROOFS(players.user_ped(), proofs1.bullet1, proofs1.fire1, proofs1.expl1, true, proofs1.melee1, proofs1.steam1, proofs1.p71, proofs1.drown1)
-	util.yield(0)
-end, function()
-	ENTITY.SET_ENTITY_PROOFS(players.user_ped(), proofs.bullet1, proofs.fire1, proofs.expl1, proofs.coll1, proofs.melee1, proofs.steam1, proofs.p71, proofs.drown1)
-end)
-
---melee proof--
-menu.toggle_loop(custom_proofs, "Meleeproof", {}, "", function()
-	ENTITY.GET_ENTITY_PROOFS(players.user_ped(), proofs.bullet, proofs.fire, proofs.expl, proofs.coll, proofs.melee, proofs.steam, proofs.p7, proofs.drown)
-
-	ENTITY.SET_ENTITY_PROOFS(players.user_ped(), proofs1.bullet1, proofs1.fire1, proofs1.expl1, proofs1.coll1, true, proofs1.steam1, proofs1.p71, proofs1.drown1)
-	util.yield(0)
-end, function()
-	ENTITY.SET_ENTITY_PROOFS(players.user_ped(), proofs.bullet1, proofs.fire1, proofs.expl1, proofs.coll1, proofs.melee1, proofs.steam1, proofs.p71, proofs.drown1)
-end)
-
---steam proof--
-menu.toggle_loop(custom_proofs, "Steamproof", {}, "", function()
-	ENTITY.GET_ENTITY_PROOFS(players.user_ped(), proofs.bullet, proofs.fire, proofs.expl, proofs.coll, proofs.melee, proofs.steam, proofs.p7, proofs.drown)
-
-	ENTITY.SET_ENTITY_PROOFS(players.user_ped(), proofs1.bullet1, proofs1.fire1, proofs1.expl1, proofs1.coll1, proofs1.melee1, true, proofs1.p71, proofs1.drown1)
-	util.yield(0)
-end, function()
-	ENTITY.SET_ENTITY_PROOFS(players.user_ped(), proofs.bullet1, proofs.fire1, proofs.expl1, proofs.coll1, proofs.melee1, proofs.steam1, proofs.p71, proofs.drown1)
-end)
-
---drown proof--
-menu.toggle_loop(custom_proofs, "Drownproof", {}, "", function()
-	ENTITY.GET_ENTITY_PROOFS(players.user_ped(), proofs.bullet, proofs.fire, proofs.expl, proofs.coll, proofs.melee, proofs.steam, proofs.p7, proofs.drown)
-
-	ENTITY.SET_ENTITY_PROOFS(players.user_ped(), proofs1.bullet1, proofs1.fire1, proofs1.expl1, proofs1.coll1, proofs1.melee1, proofs1.steam1, proofs1.p71, true)
-	util.yield(0)
-end, function()
-	ENTITY.SET_ENTITY_PROOFS(players.user_ped(), proofs.bullet1, proofs.fire1, proofs.expl1, proofs.coll1, proofs.melee1, proofs.steam1, proofs.p71, proofs.drown1)
+local proofs = {
+    bullet = {name="Bullets",on=false},
+    fire = {name="Fire",on=false},
+    explosion = {name="Explosions",on=false},
+    collision = {name="Collision",on=false},
+    melee = {name="Melee",on=false},
+    steam = {name="Steam",on=false},
+    drown = {name="Drowning",on=false},
+}
+local immortalityCmd = menu.ref_by_path("Self>Immortality")
+for _,data in pairs(proofs) do
+    menu.toggle(custom_proofs, data.name, {data.name:lower().."proof"}, "Makes you invulnerable to "..data.name:lower()..".", function(toggle)
+        data.on = toggle
+    end)
+end
+util.create_tick_handler(function()
+    local local_player = players.user_ped()
+    if not menu.get_value(immortalityCmd) then
+        ENTITY.SET_ENTITY_PROOFS(local_player, proofs.bullet.on, proofs.fire.on, proofs.explosion.on, proofs.collision.on, proofs.melee.on, proofs.steam.on, false, proofs.drown.on)
+    end
 end)
 --end proofs--
 
@@ -401,74 +353,26 @@ end)
 
 --veh proofs--
 local veh_custom_proofs = menu.list(vehicle_options, "Custom Proofs")
---bullet proof--
-menu.toggle_loop(veh_custom_proofs, "Bulletproof", {}, "", function()
-	ENTITY.GET_ENTITY_PROOFS(entities.get_user_vehicle_as_handle(true), proofs.bullet, proofs.fire, proofs.expl, proofs.coll, proofs.melee, proofs.steam, proofs.p7, proofs.drown)
-
-	ENTITY.SET_ENTITY_PROOFS(entities.get_user_vehicle_as_handle(true), true, proofs1.fire1, proofs1.expl1, proofs1.coll1, proofs1.melee1, proofs1.steam1, proofs1.p71, proofs1.drown1)
-	util.yield(0)
-end, function()
-	ENTITY.SET_ENTITY_PROOFS(entities.get_user_vehicle_as_handle(true), proofs.bullet1, proofs.fire1, proofs.expl1, proofs.coll1, proofs.melee1, proofs.steam1, proofs.p71, proofs.drown1)
-end)
-
---fire proof--
-menu.toggle_loop(veh_custom_proofs, "Fireproof", {}, "", function()
-	ENTITY.GET_ENTITY_PROOFS(entities.get_user_vehicle_as_handle(true), proofs.bullet, proofs.fire, proofs.expl, proofs.coll, proofs.melee, proofs.steam, proofs.p7, proofs.drown)
-
-	ENTITY.SET_ENTITY_PROOFS(entities.get_user_vehicle_as_handle(true), proofs1.bullet1, true, proofs1.expl1, proofs1.coll1, proofs1.melee1, proofs1.steam1, proofs1.p71, proofs1.drown1)
-	util.yield(0)
-end, function()
-	ENTITY.SET_ENTITY_PROOFS(entities.get_user_vehicle_as_handle(true), proofs.bullet1, proofs.fire1, proofs.expl1, proofs.coll1, proofs.melee1, proofs.steam1, proofs.p71, proofs.drown1)
-end)
-
---explosion proof--
-menu.toggle_loop(veh_custom_proofs, "Explosionproof", {}, "", function()
-	ENTITY.GET_ENTITY_PROOFS(entities.get_user_vehicle_as_handle(true), proofs.bullet, proofs.fire, proofs.expl, proofs.coll, proofs.melee, proofs.steam, proofs.p7, proofs.drown)
-
-	ENTITY.SET_ENTITY_PROOFS(entities.get_user_vehicle_as_handle(true), proofs1.bullet1, proofs1.fire1, true, proofs1.coll1, proofs1.melee1, proofs1.steam1, proofs1.p71, proofs1.drown1)
-	util.yield(0)
-end, function()
-	ENTITY.SET_ENTITY_PROOFS(entities.get_user_vehicle_as_handle(true), proofs.bullet1, proofs.fire1, proofs.expl1, proofs.coll1, proofs.melee1, proofs.steam1, proofs.p71, proofs.drown1)
-end)
-
---collision proof--
-menu.toggle_loop(veh_custom_proofs, "Collisionproof", {}, "", function()
-	ENTITY.GET_ENTITY_PROOFS(entities.get_user_vehicle_as_handle(true), proofs.bullet, proofs.fire, proofs.expl, proofs.coll, proofs.melee, proofs.steam, proofs.p7, proofs.drown)
-
-	ENTITY.SET_ENTITY_PROOFS(entities.get_user_vehicle_as_handle(true), proofs1.bullet1, proofs1.fire1, proofs1.expl1, true, proofs1.melee1, proofs1.steam1, proofs1.p71, proofs1.drown1)
-	util.yield(0)
-end, function()
-	ENTITY.SET_ENTITY_PROOFS(entities.get_user_vehicle_as_handle(true), proofs.bullet1, proofs.fire1, proofs.expl1, proofs.coll1, proofs.melee1, proofs.steam1, proofs.p71, proofs.drown1)
-end)
-
---melee proof--
-menu.toggle_loop(veh_custom_proofs, "Meleeproof", {}, "", function()
-	ENTITY.GET_ENTITY_PROOFS(entities.get_user_vehicle_as_handle(true), proofs.bullet, proofs.fire, proofs.expl, proofs.coll, proofs.melee, proofs.steam, proofs.p7, proofs.drown)
-
-	ENTITY.SET_ENTITY_PROOFS(entities.get_user_vehicle_as_handle(true), proofs1.bullet1, proofs1.fire1, proofs1.expl1, proofs1.coll1, true, proofs1.steam1, proofs1.p71, proofs1.drown1)
-	util.yield(0)
-end, function()
-	ENTITY.SET_ENTITY_PROOFS(entities.get_user_vehicle_as_handle(true), proofs.bullet1, proofs.fire1, proofs.expl1, proofs.coll1, proofs.melee1, proofs.steam1, proofs.p71, proofs.drown1)
-end)
-
---steam proof--
-menu.toggle_loop(veh_custom_proofs, "Steamproof", {}, "", function()
-	ENTITY.GET_ENTITY_PROOFS(entities.get_user_vehicle_as_handle(true), proofs.bullet, proofs.fire, proofs.expl, proofs.coll, proofs.melee, proofs.steam, proofs.p7, proofs.drown)
-
-	ENTITY.SET_ENTITY_PROOFS(entities.get_user_vehicle_as_handle(true), proofs1.bullet1, proofs1.fire1, proofs1.expl1, proofs1.coll1, proofs1.melee1, true, proofs1.p71, proofs1.drown1)
-	util.yield(0)
-end, function()
-	ENTITY.SET_ENTITY_PROOFS(entities.get_user_vehicle_as_handle(true), proofs.bullet1, proofs.fire1, proofs.expl1, proofs.coll1, proofs.melee1, proofs.steam1, proofs.p71, proofs.drown1)
-end)
-
---drown proof--
-menu.toggle_loop(veh_custom_proofs, "Drownproof", {}, "", function()
-	ENTITY.GET_ENTITY_PROOFS(entities.get_user_vehicle_as_handle(true), proofs.bullet, proofs.fire, proofs.expl, proofs.coll, proofs.melee, proofs.steam, proofs.p7, proofs.drown)
-
-	ENTITY.SET_ENTITY_PROOFS(entities.get_user_vehicle_as_handle(true), proofs1.bullet1, proofs1.fire1, proofs1.expl1, proofs1.coll1, proofs1.melee1, proofs1.steam1, proofs1.p71, true)
-	util.yield(0)
-end, function()
-	ENTITY.SET_ENTITY_PROOFS(entities.get_user_vehicle_as_handle(true), proofs.bullet1, proofs.fire1, proofs.expl1, proofs.coll1, proofs.melee1, proofs.steam1, proofs.p71, proofs.drown1)
+local proofs = {
+    bullet = {name="Bullets",on=false},
+    fire = {name="Fire",on=false},
+    explosion = {name="Explosions",on=false},
+    collision = {name="Collision",on=false},
+    melee = {name="Melee",on=false},
+    steam = {name="Steam",on=false},
+    drown = {name="Drowning",on=false},
+}
+local immortalityCmd = menu.ref_by_path("Self>Immortality")
+for _,data in pairs(proofs) do
+    menu.toggle(veh_custom_proofs, data.name, {data.name:lower().."proof"}, "Makes you invulnerable to "..data.name:lower()..".", function(toggle)
+        data.on = toggle
+    end)
+end
+util.create_tick_handler(function()
+    local vehicle = entities.get_user_vehicle_as_handle(true)
+    if not menu.get_value(immortalityCmd) then
+        ENTITY.SET_ENTITY_PROOFS(vehicle, proofs.bullet.on, proofs.fire.on, proofs.explosion.on, proofs.collision.on, proofs.melee.on, proofs.steam.on, false, proofs.drown.on)
+    end
 end)
 --end veh proofs--
 
