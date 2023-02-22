@@ -79,42 +79,6 @@ function ent_functions.hard_remove_entity(Entity) -- Credits to kektram for this
 	end
 end
 
-function ent_functions.vehflight(veh, speed)
-	ENTITY.FREEZE_ENTITY_POSITION(veh, true)
-    NETWORK.NETWORK_REQUEST_CONTROL_OF_ENTITY(veh)
-    local cam_rot = CAM.GET_GAMEPLAY_CAM_ROT(0)
-    ENTITY.SET_ENTITY_ROTATION(veh, cam_rot.x, cam_rot.y, cam_rot.z, 1, true)
-
-        if PAD.IS_CONTROL_PRESSED(0, 71) then --w--
-            ENTITY.FREEZE_ENTITY_POSITION(veh, false)
-            VEHICLE.SET_VEHICLE_FORWARD_SPEED(veh, speed)
-            if PAD.IS_CONTROL_PRESSED(0, 76) then --space--
-                ENTITY.FREEZE_ENTITY_POSITION(veh, false)
-                VEHICLE.SET_VEHICLE_FORWARD_SPEED(veh, 2 * speed)
-            end
-        elseif PAD.IS_CONTROL_PRESSED(0, 72) then --s--
-            ENTITY.FREEZE_ENTITY_POSITION(veh, false)
-            VEHICLE.SET_VEHICLE_FORWARD_SPEED(veh, - speed)
-            if PAD.IS_CONTROL_PRESSED(0, 76) then --space--
-                ENTITY.FREEZE_ENTITY_POSITION(veh, false)
-                VEHICLE.SET_VEHICLE_FORWARD_SPEED(veh, - 2 * speed)
-            end
-		end
-	    if PAD.IS_CONTROL_PRESSED(0, 61) then --left shift--
-            ENTITY.FREEZE_ENTITY_POSITION(veh, false)
-            ENTITY.APPLY_FORCE_TO_ENTITY_CENTER_OF_MASS(veh, 1, 0, 0, speed, 0, true, true, true, true)
-        elseif PAD.IS_CONTROL_PRESSED(0, 62) then --left ctrl--
-            ENTITY.FREEZE_ENTITY_POSITION(veh, false)
-            ENTITY.APPLY_FORCE_TO_ENTITY_CENTER_OF_MASS(veh, 1, 0, 0, - speed, 0, true, true, true, true)
-	    elseif PAD.IS_CONTROL_PRESSED(0, 63) then --a--
-            ENTITY.FREEZE_ENTITY_POSITION(veh, false)
-            ENTITY.APPLY_FORCE_TO_ENTITY_CENTER_OF_MASS(veh, 1, - speed, 0, 0, 0, true, true, true, true)
-        elseif PAD.IS_CONTROL_PRESSED(0, 64) then --d--
-            ENTITY.FREEZE_ENTITY_POSITION(veh, false)
-            ENTITY.APPLY_FORCE_TO_ENTITY_CENTER_OF_MASS(veh, 1, speed, 0, 0, 0, true, true, true, true)
-        end
-end
-
 function ent_functions.request_model(hash)
 	local timeout = 3
 	STREAMING.REQUEST_MODEL(hash)

@@ -401,34 +401,7 @@ menu.action(vehicle_options, "Force Leave Vehicle", {}, "", function()
 		TASK.CLEAR_PED_TASKS_IMMEDIATELY(players.user_ped())
 	end
 end)
---veh fly--
---this is part of Acjoker script bc the original fly option was fucked up coded in the script--
-local veh_fly_list = menu.list(vehicle_options, "Vehicle Fly")
 
-local fly_speed = 100
-vehicle_flight = menu.toggle_loop(veh_fly_list, "Vehicle Fly", {}, "", function ()
-    local veh = entities.get_user_vehicle_as_handle(players.user_ped())
-    if PED.IS_PED_IN_ANY_VEHICLE(players.user_ped()) then
-        if veh ~= 0 then
-			func.vehfly()
-            ent_func.vehflight(veh, fly_speed)
-        end 
-    else 
-        func.toast("Meteor", "Your not in any vehicle.")
-        ENTITY.FREEZE_ENTITY_POSITION(veh, false)
-		menu.set_value(vehicle_flight, false)
-    end
-end, function ()
-    local veh = entities.get_user_vehicle_as_handle(players.user_ped())
-    NETWORK.NETWORK_REQUEST_CONTROL_OF_ENTITY(veh)
-    ENTITY.FREEZE_ENTITY_POSITION(veh, false)
-    ENTITY.SET_ENTITY_HAS_GRAVITY(veh, true)
-end)
-
-menu.slider(veh_fly_list, "Change Speed", {}, "max value 20000000", 10, 20000000, 100, 10, function (value)
-	fly_speed = value
-end)
---end vehiclef fly--
 menu.toggle(vehicle_options, "Remove Plane Turbulence", {}, "", function(on)
 	if on then
 		while on do

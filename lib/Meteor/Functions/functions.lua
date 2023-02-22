@@ -117,19 +117,6 @@ local function Hudhide()
     sf.TOGGLE_MOUSE_BUTTONS(false)
 end
 
-function functions.vehfly()
-    Hudhide()
-    sf.SET_DATA_SLOT(6,PAD.GET_CONTROL_INSTRUCTIONAL_BUTTONS_STRING(0, 71, true), "| Vehicle Fly |     Forward |")
-    sf.SET_DATA_SLOT(5,PAD.GET_CONTROL_INSTRUCTIONAL_BUTTONS_STRING(0, 72, true), " Backwards |")
-	sf.SET_DATA_SLOT(4,PAD.GET_CONTROL_INSTRUCTIONAL_BUTTONS_STRING(0, 63, true), " Left |")
-	sf.SET_DATA_SLOT(3,PAD.GET_CONTROL_INSTRUCTIONAL_BUTTONS_STRING(0, 64, true), " Right |")
-	sf.SET_DATA_SLOT(2,PAD.GET_CONTROL_INSTRUCTIONAL_BUTTONS_STRING(0, 61, true), " Up |")
-	sf.SET_DATA_SLOT(1,PAD.GET_CONTROL_INSTRUCTIONAL_BUTTONS_STRING(0, 62, true), " Down |")
-	sf.SET_DATA_SLOT(0,PAD.GET_CONTROL_INSTRUCTIONAL_BUTTONS_STRING(0, 76, true), " Dubble Speed |")
-    sf.DRAW_INSTRUCTIONAL_BUTTONS()
-    sf:draw_fullscreen()
-end
-
 function functions.SF_PED_ACTION()
     Hudhide()
     sf.SET_DATA_SLOT(5,PAD.GET_CONTROL_INSTRUCTIONAL_BUTTONS_STRING(0, 323, true), "| Ped |     Delete |")
