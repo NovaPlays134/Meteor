@@ -744,7 +744,7 @@ menu.toggle_loop(explosion_modifier_list, "Orbital Strike Gun", {}, "", function
 	end
 end)
 
-menu.toggle_loop(explosion_modifier_list, "Nuke Gun", {}, "Works with all guns, if you have an slower pc there is a change that ur game will lag alot this will distroy all vehicles around the nuke and kill/let peds fall close to the nuke.", function()
+menu.toggle_loop(explosion_modifier_list, "Nuke Gun", {}, "", function()
 	if PED.IS_PED_SHOOTING(players.user_ped()) then
 		local hash = util.joaat("prop_military_pickup_01")
 		ent_func.request_model(hash)
