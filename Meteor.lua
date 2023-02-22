@@ -441,33 +441,6 @@ menu.toggle(vehicle_options, "Remove Plane Turbulence", {}, "", function(on)
 	end
 end)
 
---vehicle mods--
-local vehicle_mods_list = menu.list(vehicle_options, "Vehicle Mods")
-local rgb_list = menu.list(vehicle_mods_list, "RGB")
-
-local rgb_colors = {color= {r= 0, g = 1, b = 0, a = 1}}
-
-local neon_speed = 50
-menu.toggle_loop(rgb_list, "RGB Neons", {}, "", function()
-	if PED.IS_PED_IN_ANY_VEHICLE(players.user_ped()) then
-		local vehicle = entities.get_user_vehicle_as_handle(players.user_ped(), false)
-		for i = 0, 3 do
-			if not VEHICLE.GET_VEHICLE_NEON_ENABLED(entities.get_user_vehicle_as_handle(players.user()), i) then
-				VEHICLE.SET_VEHICLE_NEON_ENABLED(entities.get_user_vehicle_as_handle(players.user()), i, true)
-			end
-		end
-        local red = math.random(rgb_colors.color.r * 255)
-        local green = math.random(rgb_colors.color.g * 255)
-        local blue = math.random(rgb_colors.color.b * 255)
-        VEHICLE.SET_VEHICLE_NEON_COLOUR(vehicle, red, green, blue)
-		util.yield(neon_speed)
-	end
-end)
-
-menu.slider(rgb_list, "Change Neon Speed", {}, "Max value 5000", 10, 5000, 50, 10, function (value)
-	neon_speed = value
-end)
---end vehicle mods--
 local horn_boost_speed = 100
 horn_boost_toggle = menu.toggle_loop(vehicle_options, "Horn boost", {}, "If you have this on then 'Boost' wont work", function()
 	if PED.IS_PED_IN_ANY_VEHICLE(players.user_ped(), false) then
