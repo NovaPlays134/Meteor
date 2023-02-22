@@ -119,6 +119,7 @@ end)
 ----------
 --PROOFS--
 ----------
+--credit to prism for this code--
 local proofs = {
     bullet = memory.alloc(),
     fire = memory.alloc(),
@@ -352,6 +353,7 @@ menu.action_slider(vehicle_options, "Vehicle Godmode", {}, "", veh_godmode_featu
 end)
 
 --veh proofs--
+--also credit to prism for this code--
 local veh_custom_proofs = menu.list(vehicle_options, "Custom Proofs")
 local proofs = {
     bullet = {name="Bullets",on=false},
@@ -1330,21 +1332,6 @@ local trolling_options = menu.list(menu.player_root(pid), "Trolling")
 
 menu.action(player_options, "Force TP", {}, "", function()
 	menu.trigger_commands("summon"..players.get_name(pid))
-end)
-
-local sprite_pick = directx.create_texture(filesystem.scripts_dir() .. "lib/Meteor/sprite1.png")
-menu.action(player_options, "Ban Player", {}, "", function()
-	for i = 1, 500 do
-		directx.draw_texture(sprite_pick, 0.3, 0.3, 0.5, 0.5, 0.5, 0.5, 0, 1, 1, 1, 1)
-		directx.draw_texture(sprite_pick, 0.05, 0.05, 0.5, 0.5, 0.3, 0.3, 0, 1, 1, 1, 1)
-		directx.draw_texture(sprite_pick, 0.2, 0.2, 0.5, 0.5, 0.8, 0.8, 0, 1, 1, 1, 1)
-		directx.draw_texture(sprite_pick, 0.1, 0.1, 0.5, 0.5, 0.1, 0.8, 0, 1, 1, 1, 1)
-		directx.draw_texture(sprite_pick, 0.1, 0.1, 0.5, 0.5, 0.8, 0.3, 0, 1, 1, 1, 1)
-		directx.draw_texture(sprite_pick, 0.2, 0.2, 0.5, 0.5, 0.1, 0.2, 0, 1, 1, 1, 1)
-		directx.draw_texture(sprite_pick, 0.1, 0.1, 0.5, 0.5, 0.2, 0.9, 0, 1, 1, 1, 1)
-		util.yield(0)
-	end
-	MISC.QUIT_GAME()
 end)
 
 menu.action(trolling_options, "Atomize", {}, "", function()
