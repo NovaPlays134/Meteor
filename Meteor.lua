@@ -920,14 +920,10 @@ end)
 local malicious_list = menu.list(all_player_options, "Malicious")
 
 menu.action(malicious_list, "Force TP Session", {}, "kinda buggy but i dont wanna make my own tp to me.", function()
-	if util.is_session_started() then
-		for pid = 0, 31 do
-			if players.exists(pid) and pid ~= players.user() then
-				if ent_func.get_distance_between(players.get_position(players.user()), players.get_position(pid)) > 50 then
-					menu.trigger_commands("summon"..players.get_name(pid))
-					util.yield(100)
-				end
-			end
+	for _, pid in players.list(false, true, true) do
+		if ent_func.get_distance_between(players.get_position(players.user()), players.get_position(pid)) > 50 then
+			menu.trigger_commands("summon"..players.get_name(pid))
+			util.yield(100)
 		end
 	end
 end)
@@ -936,7 +932,7 @@ local trolling_list = menu.list(all_player_options, "Trolling")
 
 menu.action(trolling_list, "Earrape Everyone", {}, "", function()
 	for i = 0, 100 do
-		for pid = 0, 31 do
+		for _, pid in players.list(false, true, true) do
 			local player_pos = players.get_position(pid)
 			AUDIO.PLAY_SOUND_FROM_COORD(-1, "BED", player_pos.x, player_pos.y, player_pos.z, "WASTEDSOUNDS", true, 9999, false)
 		end
@@ -945,18 +941,18 @@ end)
 
 menu.toggle(trolling_list, "Play Ringtone", {}, "", function(on)
 	if on then
-	    for pid = 0, 31 do
-		    if players.exists(pid) then
-			    AUDIO.PLAY_PED_RINGTONE("Remote_Ring", PLAYER.GET_PLAYER_PED_SCRIPT_INDEX(pid), true)
-		    end
-	    end
-	end
-	if not on then
-		for pid = 0, 31 do
-		    if players.exists(pid) then
-			    AUDIO.STOP_PED_RINGTONE( PLAYER.GET_PLAYER_PED_SCRIPT_INDEX(pid))
-		    end
-	    end
+        	for _, pid in players.list(false, true, true) do
+        	    if players.exists(pid) then
+        		    AUDIO.PLAY_PED_RINGTONE("Remote_Ring", PLAYER.GET_PLAYER_PED_SCRIPT_INDEX(pid), true)
+        	    end
+        	end
+        if not on then
+        	for _, pid in players.list(false, true, true) do
+        	    if players.exists(pid) then
+        		    AUDIO.STOP_PED_RINGTONE(PLAYER.GET_PLAYER_PED_SCRIPT_INDEX(pid))
+        	    end
+            end
+        end
 	end
 end)
 
