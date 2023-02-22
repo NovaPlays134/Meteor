@@ -16,7 +16,7 @@ function playr_functions.is_player_driving_train(pid)
 		return false
 	end
 end
-
+--credit to lance for this--
 function playr_functions.get_offset_from_gameplay_camera(distance)
 	local cam_rot = CAM.GET_GAMEPLAY_CAM_ROT(0)
 	local cam_pos = CAM.GET_GAMEPLAY_CAM_COORD()
