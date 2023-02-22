@@ -25,6 +25,7 @@ local function splitter(input)
     return words
 end
 
+--credits to not thonk for making this function and letting me use it--
 local function cut_string_to_length(input, length, fontSize)
     input = splitter(input)
     local output = {}
