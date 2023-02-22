@@ -866,16 +866,6 @@ end)
 -------------------------------------------------
 --all player options--
 local malicious_list = menu.list(all_player_options, "Malicious")
-
-menu.action(malicious_list, "Force TP Session", {}, "kinda buggy but i dont wanna make my own tp to me.", function()
-	for _, pid in players.list(false, true, true) do
-		if ent_func.get_distance_between(players.get_position(players.user()), players.get_position(pid)) > 50 then
-			menu.trigger_commands("summon"..players.get_name(pid))
-			util.yield(100)
-		end
-	end
-end)
-
 local trolling_list = menu.list(all_player_options, "Trolling")
 
 menu.action(trolling_list, "Earrape Everyone", {}, "", function()
