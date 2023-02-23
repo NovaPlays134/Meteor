@@ -840,7 +840,7 @@ end)
 local moneys_wallet = {100000, 250000, 500000, 750000, 1000000, 2147483647, math.random(2147483, 2147483647)}
 local money_amound_wallet = {"$100k", "$250k", "$500k", "$750k", "$1000k", "2147483647", "Random"}
 local money_wallet = 1000000
-menu.list_action(fake_money_modifier_list, "Wallet Amound", {}, "", money_amound_wallet, function(money_am)
+menu.list_action(fake_money_modifier_list, "Wallet Amount", {}, "", money_amound_wallet, function(money_am)
 	money_wallet = (moneys_wallet[money_am])
 end)
 menu.toggle_loop(fake_money_modifier_list, "Wallet Money Loop", {}, "Only in online.", function()
@@ -852,7 +852,7 @@ end)
 local moneys_bank = {100000, 250000, 500000, 750000, 1000000, 2147483647, math.random(2147483, 2147483647)}
 local money_amound_bank = {"$100k", "$250k", "$500k", "$750k", "$1000k", "2147483647", "Random"}
 local money_bank = 1000000
-menu.list_action(fake_money_modifier_list, "Bank Amound", {}, "", money_amound_bank, function(money_am)
+menu.list_action(fake_money_modifier_list, "Bank Amount", {}, "", money_amound_bank, function(money_am)
 	money_bank = (moneys_bank[money_am])
 end)
 menu.toggle_loop(fake_money_modifier_list, "Bank Money Loop", {}, "", function()
