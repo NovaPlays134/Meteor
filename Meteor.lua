@@ -104,7 +104,7 @@ local lobby_options = menu.list(main_online, "Lobby")
 
 
 local godmode_features = {"Off", "v1", "v2"}
-menu.action_slider(player_options, "Godmode", {}, "", godmode_features, function(index, name)
+menu.textslider(player_options, "Godmode", {}, "", godmode_features, function(index, name)
 	if index == 2 then
 		ENTITY.SET_ENTITY_PROOFS(players.user_ped(), true, true, true, true, true, true, true, true)
 	else
@@ -336,7 +336,7 @@ end)
 --VEHICLE OPTIONS--
 -------------------
 local veh_godmode_features = {"Off", "v1", "v2"}
-menu.action_slider(vehicle_options, "Vehicle Godmode", {}, "", veh_godmode_features, function(index, name)
+menu.textslider(vehicle_options, "Vehicle Godmode", {}, "", veh_godmode_features, function(index, name)
 	if PED.IS_PED_IN_ANY_VEHICLE(players.user_ped(), true) then
 	    if index == 2 then
 	    	ENTITY.SET_ENTITY_PROOFS(entities.get_user_vehicle_as_handle(true), true, true, true, true, true, true, true, true)
@@ -1278,7 +1278,7 @@ menu.text_input(main_spawner, "Spawn Entity", {"Enter Hash Model"}, "", function
 end, "u_m_y_zombie_01")
 
 local entity_spawn_features = {"Ped", "Vehicle", "Object", "World Object"}
-menu.action_slider(main_spawner, "Select Entity Sort", {}, "", entity_spawn_features, function(index, name)
+menu.textslider(main_spawner, "Select Entity Sort", {}, "", entity_spawn_features, function(index, name)
 	entity_sort = index
 end)
 
